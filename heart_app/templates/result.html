@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #333;
+        }
+        .metrics {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .metrics p {
+            font-size: 18px;
+            color: #444;
+        }
+        .highlight {
+            font-size: 22px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        img {
+            width: 80%;
+            max-width: 500px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p class="highlight">{{ result }}</p>
+
+        <h3>Model Performance Metrics</h3>
+        <div class="metrics">
+            <p><strong>Accuracy:</strong> {{ accuracy|floatformat:2 }}</p>
+            <p><strong>Precision:</strong> {{ precision|floatformat:2 }}</p>
+            <p><strong>Recall:</strong> {{ recall|floatformat:2 }}</p>
+            <p><strong>F1 Score:</strong> {{ f1|floatformat:2 }}</p>
+            <p><strong>ROC-AUC Score:</strong> {{ roc_auc|floatformat:2 }}</p>
+        </div>
+
+        <h3>Confusion Matrix</h3>
+        <img src="{{ conf_matrix_img }}" alt="Confusion Matrix">
+
+        <h3>ROC-AUC Curve</h3>
+        <img src="{{ roc_curve_img }}" alt="ROC Curve">
+        
+    </div>
+</body>
+</html>
